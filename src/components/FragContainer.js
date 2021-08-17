@@ -2,8 +2,7 @@ import styled from "styled-components"
 
 //    border:solid red;
 const FragContainer = styled.div`
-
-    padding: 0px 30px;
+    padding: 5px 25px;
     min-height: 100vh;
     height: auto;
     overflow-wrap:break-word;
