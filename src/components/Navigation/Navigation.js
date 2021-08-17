@@ -19,9 +19,9 @@ const Navigation = () => {
             <NavBar className="navbar">
                 <NavButton to={`${process.env.PUBLIC_URL}/`}>Home</NavButton>
                 <NavDivider className="divider" />
-                <NavButton to={`${process.env.PUBLIC_URL}/uen-validate`}>Uen-Validate</NavButton>
+                <NavButton to={`${process.env.PUBLIC_URL}/uen-validate`}>Validate UEN</NavButton>
                 <NavDivider className="divider" />
-                <NavButton to={`${process.env.PUBLIC_URL}/weather-forecast`}>Weather</NavButton>
+                <NavButton to={`${process.env.PUBLIC_URL}/weather-forecast`}>SG Weather</NavButton>
             </NavBar>
             <Switch>
                 <Route path={`${process.env.PUBLIC_URL}/`} exact component={Home} ></Route>

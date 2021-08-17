@@ -31,17 +31,16 @@ export const NavIcon = styled.button`
 
 // Navigation Bar
 export const NavBar = styled.div`
-	height: 28px;
-	line-height: 28px;
+	height: 100%;
+	line-height: 100%;
 	width: 100%;
 	display: flex;
 	justift-content: space-around;
 	align-item: center;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 5px;
-	margin-bottom:15px;
-	border: 2px solid red;
+	padding:0;
+	background-color:${mainColor};
 
 	@media only screen and (max-width: ${media_max_width}) {
 		flex-direction: column;
@@ -57,23 +56,26 @@ export const NavButton = styled(Link)`
 	position: relative;
 	text-decoration: none;
     text-align: center;
-	color: #163F4B;
-	font-size: 13px;
+	color: white;
+	font-size: 15px;
     font-weight: bold;
     font-family: OpenSans, Helvetica, sans-serif;
-	padding: 0px 2px;
+	padding: 15px 0px;
 	height: 100%;
-	width: 10%;
+	line-height: 100%;
+	width: 33%;
 
 
 	&:hover {
-		color: ${mainColor};
+		color: white;
 		text-decoration: underline;
+		background-color:${subColor};
+	
 	}
 
 	@media only screen and (max-width: 800px) {
 		display:block;
-        padding:0px;
+		padding: 10px 5px;
         width:100%;
 	}
 `;
@@ -88,10 +90,11 @@ export const NavLine = styled.hr`
 
 // Vertical Line Separating Each Navigation Link
 export const NavDivider = styled.div`
-    margin: 7px 0px;
+    margin: 0;
     height:15px;
     width:2px;
-    background-color:#EDF4F6;
+	padding:0;
+    background-color:${subColor};
 
     @media only screen and (max-width: ${media_max_width}) {
         display:none;

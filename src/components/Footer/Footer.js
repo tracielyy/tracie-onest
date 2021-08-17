@@ -1,11 +1,13 @@
-import { DesignByContainer, FooterContainer } from "./FooterElements"
+import { faDotCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ArrowRight, Dot } from 'react-bootstrap-icons';
+import { DesignByContainer, FooterContainer } from "./FooterElements";
 
 // Main Footer
 const Footer = () => {
     return (
         <>
-            <FooterContainer></FooterContainer>
-            <DesignByContainer>Designed By Tracie</DesignByContainer>
+            <DesignByContainer><Dot/> Designed By Tracie <Dot/> 2021 <Dot/></DesignByContainer>
         </>
 
     );
