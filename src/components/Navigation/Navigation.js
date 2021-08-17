@@ -17,16 +17,16 @@ const Navigation = () => {
     return (
         <Router className="router">
             <NavBar className="navbar">
-                <NavButton to="/">Home</NavButton>
+                <NavButton to={`${process.env.PUBLIC_URL}/`}>Home</NavButton>
                 <NavDivider className="divider" />
-                <NavButton to="/uen-validate">Uen-Validate</NavButton>
+                <NavButton to={`${process.env.PUBLIC_URL}/uen-validate`}>Uen-Validate</NavButton>
                 <NavDivider className="divider" />
-                <NavButton to="/weather">Weather</NavButton>
+                <NavButton to={`${process.env.PUBLIC_URL}/weather-forecast`}>Weather</NavButton>
             </NavBar>
             <Switch>
-                <Route path='/' exact component={Home} ></Route>
-                <Route path='/uen-validate' component={Uen_Validate} ></Route>
-                <Route path='/weather' component={Weather} ></Route>
+                <Route path={`${process.env.PUBLIC_URL}/`} exact component={Home} ></Route>
+                <Route path={`${process.env.PUBLIC_URL}/uen-validate`} component={Uen_Validate} ></Route>
+                <Route path={`${process.env.PUBLIC_URL}/weather-forecast`} component={Weather} ></Route>
             </Switch>
         </Router>
     )
