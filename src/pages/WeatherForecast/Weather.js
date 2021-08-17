@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloudMoon, faCloudRain, faCloudSun, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { WiCloudy, WiDaySunny, WiNightAltPartlyCloudy, WiNightPartlyCloudy, WiRain, WiRainMix, WiShowers, WiSunrise, WiThunderstorm } from 'weather-icons-react';
 import { mainColor, subColor, weatherIconColor } from "../../components/Color/Color.jsx";
-import './WeatherDisplay.css';
+import './Weather.css';
 
 const WeatherCard = styled.div`
     width:30%;
@@ -15,7 +15,7 @@ const WeatherCard = styled.div`
     margin-bottom: 10px;
 `;
 
-
+// Display Icon Based On Weather Condition
 const WeatherIcon = ({ forecast }) => {
     var size = 300;
     if (forecast == "Fair (Day)") {
@@ -31,10 +31,10 @@ const WeatherIcon = ({ forecast }) => {
         var icon_name = faCloudSun;
     }
     else if (forecast == "Partly Cloudy (Night)") {
-        var icon = <WiNightAltPartlyCloudy size={size} color='#000' />;
+        var icon = <WiNightAltPartlyCloudy size={size} color={weatherIconColor}  />;
     }
     else if (forecast == "Cloudy") {
-        var icon = <WiCloudy size={size} color='#000' />;
+        var icon = <WiCloudy size={size} color={weatherIconColor}  />;
     }
     else if (forecast == "Hazy") {
 
@@ -49,7 +49,7 @@ const WeatherIcon = ({ forecast }) => {
 
     }
     else if (forecast == "Light Rain") {
-        var icon = <WiRain size={size} className="w-icon" />;
+        var icon = <WiRain size={size} color={weatherIconColor} className="w-icon" />;
 
     }
     else if (forecast == "Moderate Rain") {
@@ -76,6 +76,7 @@ const WeatherIcon = ({ forecast }) => {
 
     }
     else if (forecast == "Heavy Thundery Showers") {
+        var icon = <WiThunderstorm size={size} color={weatherIconColor} />;
 
     }
     else if (forecast == "Heavy Thundery Shower With Gusty Winds") {
@@ -93,7 +94,7 @@ const WeatherDisplay = ({ location, data }) => {
     let regexTime = '^([0-1][0-9]|[2][0-4]):[0]{2}$';
 
     // Date & Time
-    var days = ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 
 
@@ -111,14 +112,15 @@ const WeatherDisplay = ({ location, data }) => {
             if (currentDate > start && currentDate < end) {
                 var forecast = data[i].forecasts[location].forecast;
                 console.log(startTime + " to " + endTime);
-                // header = <div class="card-header">{days[currentDate.getDay()]}</div>
+                var day = days[currentDate.getDay()];
+                header = <div class="card-header">{day}</div>
 
                 info = <WeatherIcon forecast={forecast} />;
                 break;
             }
         }
     }
-    return (<WeatherCard className="card w-card">sad{info}</WeatherCard>);
+    return (<WeatherCard className="card w-card">{header}{info}</WeatherCard>);
 }
 
 export default WeatherDisplay;
