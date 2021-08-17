@@ -1,12 +1,15 @@
 import { Fragment } from "react";
 import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
+import './Weather.css';
 
 
 
 // Import Components
 import Container from "../../components/FragContainer";
-import WeatherDisplay from "./WeatherDisplay";
+import WeatherDisplay from "./Weather";
+import { Form } from "react-bootstrap";
+
 
 const Weather = () => {
     // Current Date
@@ -81,10 +84,6 @@ const Weather = () => {
     );
 
 
-
-
-
-
     const apiKey = "https://api.data.gov.sg/v1/environment/2-hour-weather-forecast";
     async function forecastData(location) {
         const data = await fetch(
@@ -128,26 +127,33 @@ const Weather = () => {
         // Set Current Retrieval Time
         setTime({ ...time, time: getCurrentTime() });
 
+        // console.log(value);
+
     };
 
     return (
         <Fragment>
             <Container>
-                <h1>Weather Forecast</h1>
+                <h1 className="mt-5">Singapore Weather Forecast</h1>
+
                 <div className="weather">
-                    <div>Retrieved at <span id="current-time">{time.time}</span></div>
                     <form>
-                        <select name="area" onChange={(element) => handleChange(element)}>
-                            {location_options}
-                        </select>
+                        <Form.Group >
+                            <Form.Select style={{ width: '50%', margin: 'auto' }} name="area" className="col-3" id="area-select"
+                                onChange={(element) => handleChange(element)}>
+                                {location_options}
+                            </Form.Select>
+                        </Form.Group>
+
                     </form>
 
                     {/* {console.log(new Date('2021-08-16T00:30:00+08:00'))} */}
                     {/* {console.log(new Date())} */}
+                    <div>Retrieved at <span id="current-time">{time.time}</span></div>
 
                     {weather.data != undefined ? (
                         <div>
-                            <WeatherDisplay location={form.area} data={weather.data} />
+                            <WeatherDisplay location={form.area} data={weather.data} style={{margin:'30px'}} />
                         </div>
                     ) : null}
                 </div>
