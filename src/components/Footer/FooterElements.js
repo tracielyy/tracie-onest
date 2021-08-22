@@ -14,6 +14,6 @@ background-color:${subColor};
 color:white;
 padding: 10px 20px;
 text-align:center;
-font-family: Cavolini;
+font-family: Segoe Print;
 font-size:15px;
 `;
