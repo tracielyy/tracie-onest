@@ -40,7 +40,6 @@ const Uen_Validate = () => {
     // regex
     function Check_UEN(uen) {
 
-
         const regexBizReg = /^[0-9]{8}[A-Z]$/;
         const regexLocal = /^(1|2)[0-9]{3}[0-9]{5}[A-Z]$/;
         const regexOthers = /^(T|S)[0-9]{2}[A-Z]{2}[0-9]{4}[A-Z]$/;
@@ -85,7 +84,7 @@ const Uen_Validate = () => {
                         }
                     }
                     if(!ok){
-                        setUenErr('Invalid Format');
+                        setUenErr('Invalid UEN format');
                         console.log(uen.substring(3,5));
                     }
                 }
@@ -93,7 +92,7 @@ const Uen_Validate = () => {
                 setUenErr('Invalid UEN format');
             }
         } else {
-            setUenErr('Invalid UEN');
+            setUenErr('Invalid UEN format');
         }
     }
 

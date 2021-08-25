@@ -9,6 +9,7 @@ import './Weather.css';
 import Container from "../../components/FragContainer";
 import WeatherDisplay from "./Weather";
 import { Form } from "react-bootstrap";
+import FloatingLabel from 'react-bootstrap/FloatingLabel'
 
 
 const Weather = () => {
@@ -28,54 +29,13 @@ const Weather = () => {
     });
 
     // Singapore Locations
-    let sg_loc = [
-        'Ang Mo Kio',
-        'Bedok',
-        'Bishan',
-        'Boon Lay',
-        'Bukit Batok',
-        'Bukit Merah',
-        'Bukit Panjang',
-        'Bukit Timah',
-        'Central Water Catchment',
-        'Changi',
-        'Choa Chu Kang',
-        'Clementi',
-        'City',
-        'Geylang',
-        'Hougang',
-        'Jalan Bahar',
-        'Jurong East',
-        'Jurong Island',
-        'Jurong West',
-        'Kallang',
-        'Lim Chu Kang',
-        'Mandai',
-        'Marine Parade',
-        'Novena',
-        'Pasir Ris',
-        'Paya Lebar',
-        'Pioneer',
-        'Pulau Tekon',
-        'Pulau Ubin',
-        'Punggol',
-        'Queenstown',
-        'Seletar',
-        'Sembawang',
-        'Sengkang',
-        'Sentosa',
-        'Serangoon',
-        'Southern Islands',
-        'Sungei Kadut',
-        'Tampines',
-        'Tanglin',
-        'Tengah',
-        'Toa Payoh',
-        'Tuas',
-        'Western Islands',
-        'Western Water Catchment',
-        'Woodlands',
-        'Yishun'
+    const sg_loc = [
+        'Ang Mo Kio', 'Bedok', 'Bishan', 'Boon Lay', 'Bukit Batok', 'Bukit Merah', 'Bukit Panjang', 'Bukit Timah',
+        'Central Water Catchment', 'Changi', 'Choa Chu Kang', 'Clementi', 'City', 'Geylang', 'Hougang', 'Jalan Bahar',
+        'Jurong East', 'Jurong Island', 'Jurong West', 'Kallang', 'Lim Chu Kang', 'Mandai', 'Marine Parade', 'Novena',
+        'Pasir Ris', 'Paya Lebar', 'Pioneer', 'Pulau Tekon', 'Pulau Ubin', 'Punggol', 'Queenstown', 'Seletar',
+        'Sembawang', 'Sengkang', 'Sentosa', 'Serangoon', 'Southern Islands', 'Sungei Kadut', 'Tampines', 'Tanglin',
+        'Tengah', 'Toa Payoh', 'Tuas', 'Western Islands', 'Western Water Catchment', 'Woodlands', 'Yishun'
     ];
 
     // Option Values Of Singapore Areas
@@ -138,11 +98,19 @@ const Weather = () => {
 
                 <div className="weather">
                     <form>
-                        <Form.Group >
-                            <Form.Select style={{ width: '50%', margin: 'auto' }} name="area" className="col-3" id="area-select"
-                                onChange={(element) => handleChange(element)}>
-                                {location_options}
-                            </Form.Select>
+
+                        <Form.Group style={{ width: '50%', margin: 'auto' }}>
+                            <FloatingLabel controlId="floatingSelect" label="Please Select An Area">
+                                <Form.Select
+                                    name="area"
+                                    className="col-3"
+                                    id="area-select"
+                                    onChange={(element) => handleChange(element)}
+                                >
+                                    <option hidden></option>
+                                    {location_options}
+                                </Form.Select>
+                            </FloatingLabel>
                         </Form.Group>
 
                     </form>
@@ -153,7 +121,7 @@ const Weather = () => {
 
                     {weather.data != undefined ? (
                         <div>
-                            <WeatherDisplay location={form.area} data={weather.data} style={{margin:'30px'}} />
+                            <WeatherDisplay location={form.area} data={weather.data} style={{ margin: '30px' }} />
                         </div>
                     ) : null}
                 </div>

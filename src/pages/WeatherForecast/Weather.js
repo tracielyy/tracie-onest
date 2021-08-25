@@ -17,7 +17,7 @@ const WeatherCard = styled.div`
 
 // Display Icon Based On Weather Condition
 const WeatherIcon = ({ forecast }) => {
-    var size = 300;
+    var size = "40%";
     if (forecast == "Fair (Day)") {
         var icon_name = faSun;
     }
