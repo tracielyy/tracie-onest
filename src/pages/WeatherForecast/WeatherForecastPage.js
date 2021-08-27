@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 import './Weather.css';
 
-
-
 // Import Components
 import Container from "../../components/FragContainer";
 import WeatherDisplay from "./Weather";
@@ -40,15 +38,13 @@ const Weather = () => {
 
     // Option Values Of Singapore Areas
     const location_options = sg_loc.map((location) =>
-        <option value={sg_loc.indexOf(location)}>{location}</option>
+        <option value={sg_loc.indexOf(location)} key={location}>{location}</option>
     );
 
 
     const apiKey = "https://api.data.gov.sg/v1/environment/2-hour-weather-forecast";
     async function forecastData(location) {
-        const data = await fetch(
-            `${apiKey}?date=${getCurrentDate("-")}`
-        )
+        const data = await fetch(`${apiKey}?date=${getCurrentDate("-")}`)
             .then((res) => res.json())
             .then((data) => data);
 
@@ -65,13 +61,6 @@ const Weather = () => {
         return `${year}${separator}${month < 10 ? `0${month}` : `${month}`}${separator}${date}`;
     }
 
-    function getCurrentTime() {
-        let currentDate = new Date();
-        let hour = currentDate.getHours();
-        let min = currentDate.getMinutes();
-        return `${hour}:${min < 10 ? `0${min}` : `${min}`}`;
-    }
-
     // On Change Set The Data
     const handleChange = (e) => {
         let name = e.target.name;
@@ -84,10 +73,8 @@ const Weather = () => {
         // Fetch Weather Data
         forecastData(value);
 
-        // Set Current Retrieval Time
-        setTime({ ...time, time: getCurrentTime() });
-
-        // console.log(value);
+        // // Set Current Retrieval Time
+        // setTime({ ...time, time: getCurrentTime() });
 
     };
 
@@ -98,8 +85,8 @@ const Weather = () => {
 
                 <div className="weather">
                     <form>
-
-                        <Form.Group style={{ width: '50%', margin: 'auto' }}>
+                        {/* Dropdown to select area */}
+                        <Form.Group style={{ width: '50%', margin: '50px auto' }}>
                             <FloatingLabel controlId="floatingSelect" label="Please Select An Area">
                                 <Form.Select
                                     name="area"
@@ -117,7 +104,6 @@ const Weather = () => {
 
                     {/* {console.log(new Date('2021-08-16T00:30:00+08:00'))} */}
                     {/* {console.log(new Date())} */}
-                    <div>Retrieved at <span id="current-time">{time.time}</span></div>
 
                     {weather.data != undefined ? (
                         <div>

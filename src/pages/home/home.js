@@ -8,14 +8,14 @@ import Container from "../../components/FragContainer"
 import { ArrowRight } from "react-bootstrap-icons";
 
 const Service = ({ eKey, header, contents }) => {
-
+    let count = 0;
     return (
         <Accordion.Item eventKey={eKey}>
             <Accordion.Header>{header}</Accordion.Header>
             <Accordion.Body className="text-left" >
                 <>
                     {contents.map(content => (
-                        <div className="content"><ArrowRight /> {content.main}
+                        <div className="content" key={count++}><ArrowRight /> {content.main}
                             {content.url ? <a href={content.url}>here</a> : null}.
                         </div>
                     ))}

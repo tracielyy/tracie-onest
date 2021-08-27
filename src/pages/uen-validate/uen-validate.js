@@ -31,7 +31,7 @@ const SuccessAlert = ({ msg }) => {
 const Uen_Validate = () => {
 
     const { register, handleSubmit, setValue, formState: { errors } } = useForm({
-        criteriaMode: 'all',
+        criteriaMode: 'all', // For err messages
     });
     const uen = useRef(); // uen field
     const [uenErr, setUenErr] = useState(null);
@@ -49,6 +49,7 @@ const Uen_Validate = () => {
             'NR', 'CM', 'CD', 'MD', 'HS', 'VH', 'CH', 'MH', 'CL', 'XL', 'CX', 'RP', 'TU', 'TC', 'FB', 'FN', 'PA',
             'PB', 'SS', 'MC', 'SM'
         ];
+        
         let ok = false;
         // Step 1: Check Empty
         uen = uen.trim().toUpperCase();
