@@ -49,6 +49,7 @@ const Uen_Validate = () => {
             'NR', 'CM', 'CD', 'MD', 'HS', 'VH', 'CH', 'MH', 'CL', 'XL', 'CX', 'RP', 'TU', 'TC', 'FB', 'FN', 'PA',
             'PB', 'SS', 'MC', 'SM'
         ];
+
         // Step 1: Check Empty
         uen = uen.trim().toUpperCase();
         if (uen !== "") {
@@ -60,8 +61,10 @@ const Uen_Validate = () => {
             if (uenLen === 9) {
 
                 if (regexBizReg.test(uen)) {
+
                     // (A) Business Registered With ACRA (9 chars - [nnnnnnnnX])
-                    setUenSuccess('Valid business registered with ACRA format');
+                    setUenSuccess('Valid format: Business registered with ACRA');
+
                 } else {
                     setUenErr('Invalid UEN format');
                 }
@@ -70,22 +73,24 @@ const Uen_Validate = () => {
             }
             else if (uenLen === 10) {
                 if (regexLocal.test(uen)) {
+
                     // (B) Local Companies Registered With ACRA (10 chars - [yyyynnnnnX])
-                    setUenSuccess('Valid local companies registered with ACRA format');
+                    setUenSuccess('Valid format: Local companies registered with ACRA');
                 } else if (regexOthers.test(uen)) {
                     let ok = false;
+
                     for (let eti in entityTypeIndicator) {
-                        console.log(entityTypeIndicator[eti]);
                         if (uen.substring(3, 5) == entityTypeIndicator[eti]) {
+
                             // (C) All Other entities which will be issued new UEN (10 chars - [TyyPQnnnnX])
                             setUenSuccess('Valid format');
                             ok = true;
                             break;
+
                         }
                     }
                     if(!ok){
                         setUenErr('Invalid UEN format');
-                        console.log(uen.substring(3,5));
                     }
                 }
             } else {
@@ -132,7 +137,6 @@ const Uen_Validate = () => {
                         <Card.Title>Search UEN</Card.Title>
                         <Form onSubmit={handleSubmit(onSubmit, onError)}>
                             <InputGroup className="" style={{ width: '50%', margin: 'auto' }} hasValidation >
-                                { /*required: true, minLength: 9, maxLength: 10*/}
                                 <Form.Control
                                     {...register("uen", {
                                         required: "Required",
@@ -165,7 +169,6 @@ const Uen_Validate = () => {
                             <div style={{ width: '50%', margin: '15px auto' }}>
                                 {!errors.uen && uenSuccess !== null && (<SuccessAlert msg={uenSuccess} />)}
                             </div>
-
                         </Form>
                     </Card.Body>
                 </Card>
