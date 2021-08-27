@@ -7,7 +7,7 @@ import Alert from 'react-bootstrap/Alert'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { useForm } from "react-hook-form";
 
 // Import Components
@@ -49,7 +49,7 @@ const Uen_Validate = () => {
             'NR', 'CM', 'CD', 'MD', 'HS', 'VH', 'CH', 'MH', 'CL', 'XL', 'CX', 'RP', 'TU', 'TC', 'FB', 'FN', 'PA',
             'PB', 'SS', 'MC', 'SM'
         ];
-
+        let ok = false;
         // Step 1: Check Empty
         uen = uen.trim().toUpperCase();
         if (uen !== "") {
@@ -64,39 +64,36 @@ const Uen_Validate = () => {
 
                     // (A) Business Registered With ACRA (9 chars - [nnnnnnnnX])
                     setUenSuccess('Valid format: Business registered with ACRA');
+                    ok = true;
 
-                } else {
-                    setUenErr('Invalid UEN format');
                 }
-
 
             }
             else if (uenLen === 10) {
+
                 if (regexLocal.test(uen)) {
 
                     // (B) Local Companies Registered With ACRA (10 chars - [yyyynnnnnX])
                     setUenSuccess('Valid format: Local companies registered with ACRA');
+                    ok = true;
+
                 } else if (regexOthers.test(uen)) {
-                    let ok = false;
 
                     for (let eti in entityTypeIndicator) {
-                        if (uen.substring(3, 5) == entityTypeIndicator[eti]) {
+                        if (uen.substring(3, 5) === entityTypeIndicator[eti]) {
 
                             // (C) All Other entities which will be issued new UEN (10 chars - [TyyPQnnnnX])
-                            setUenSuccess('Valid format');
+                            setUenSuccess('Valid format: Other entities with new UEN.');
                             ok = true;
                             break;
 
                         }
                     }
-                    if(!ok){
-                        setUenErr('Invalid UEN format');
-                    }
+
                 }
-            } else {
-                setUenErr('Invalid UEN format');
             }
-        } else {
+        }
+        if (!ok) {
             setUenErr('Invalid UEN format');
         }
     }
@@ -115,17 +112,12 @@ const Uen_Validate = () => {
     }
 
     const onSubmit = data => {
-        if (errors.uen) {
-            console.log('error');
-        }
         display_msg_reset();
         Check_UEN(data.uen);
-        console.log(data.uen);
     }
 
     const onError = () => {
         display_msg_reset();
-        console.log('err');
     }
 
     return (
