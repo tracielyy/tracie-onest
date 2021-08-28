@@ -5,7 +5,7 @@ import { DesignByContainer, FooterContainer } from "./FooterElements";
 const Footer = () => {
     return (
         <>
-            <DesignByContainer><Dot/> Designed By Tracie <Dot/> 2021 <Dot/></DesignByContainer>
+            <DesignByContainer><Dot/> Designed &amp; Developed By Tracie <Dot/> 2021 <Dot/></DesignByContainer>
         </>
 
     );

@@ -4,16 +4,16 @@ import { mainColor, subColor } from "../../components/Color/Color.jsx";
 
 
 export const FooterContainer = styled.footer`
-padding: 15px 30px;
-background-color: ${mainColor};
-color:white;
+    padding: 15px 30px;
+    background-color: ${mainColor};
+    color:white;
 `;
 
 export const DesignByContainer = styled.div`
-background-color:${subColor};
-color:white;
-padding: 10px 20px;
-text-align:center;
-font-family: Segoe Print;
-font-size:15px;
+    background-color:${subColor};
+    color:white;
+    padding: 10px 20px;
+    text-align:center;
+    font-family: Monospace;
+    font-size:15px;
 `;
