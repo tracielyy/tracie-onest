@@ -1,20 +1,20 @@
 .w-card {
-    padding:2px 0;
+	padding: 2px 0;
 	box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.2);
-    
+}
+.overlap {
+    display: absolute;
+    z-index: 3;
+}
+.text-left {
+	text-align: left;
 }
 
-.text-left{
-    text-align: left;
-}
-
-@media only screen and (max-width: '800px') {
-
-    .w-icon {
-        width:30px;
-    }
-    #area-select{
-        width:100%;
-
-    }
+@media only screen and (max-width: "800px") {
+	.w-icon {
+		width: 30px;
+	}
+	#area-select {
+		width: 100%;
+	}
 }

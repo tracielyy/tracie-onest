@@ -1,6 +1,5 @@
 import { Fragment } from "react";
-import React, { useState, useEffect } from 'react';
-import styled from "styled-components";
+import React, { useState } from 'react';
 import './Weather.css';
 
 // Import Components
@@ -10,15 +9,14 @@ import { Form } from "react-bootstrap";
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 
 
+
 const Weather = () => {
-    // Current Date
-    const currentDate = new Date();
 
     // Weather Data
     const [weather, setWeather] = useState([]);
 
-    const [time, setTime] = useState({
-        time: ""
+    const [error, setError] = useState({
+        error: false
     });
 
     // Form
@@ -45,10 +43,16 @@ const Weather = () => {
     const apiKey = "https://api.data.gov.sg/v1/environment/2-hour-weather-forecast";
     async function forecastData(location) {
         const data = await fetch(`${apiKey}?date=${getCurrentDate("-")}`)
-            .then((res) => res.json())
-            .then((data) => data);
+            .then((res) => { if (res.ok) { return res.json(); } })
+            .then((data) => {
+                setWeather({ data: data.items });
+                setError({ error: false });
+            })
+            .catch(function () {
+                setWeather({ data: undefined });
+                setError({ error: true });
+            });
 
-        setWeather({ data: data.items });
 
     }
 
@@ -73,16 +77,12 @@ const Weather = () => {
         // Fetch Weather Data
         forecastData(value);
 
-        // // Set Current Retrieval Time
-        // setTime({ ...time, time: getCurrentTime() });
-
     };
 
     return (
         <Fragment>
             <Container>
                 <h1 className="mt-5">Singapore Weather Forecast</h1>
-
                 <div className="weather">
                     <form>
                         {/* Dropdown to select area */}
@@ -99,16 +99,16 @@ const Weather = () => {
                                 </Form.Select>
                             </FloatingLabel>
                         </Form.Group>
-
                     </form>
-
-                    {/* {console.log(new Date('2021-08-16T00:30:00+08:00'))} */}
-                    {/* {console.log(new Date())} */}
-
+                    {/* Display Weather Data */}
                     {weather.data != undefined ? (
                         <div>
-                            <WeatherDisplay location={form.area} data={weather.data} style={{ margin: '30px' }} />
+                            <WeatherDisplay location={form.area} data={weather.data} />
                         </div>
+                    ) : null}
+                    {/* Display If There Is Any Error In Data Retrieval */}
+                    {error.error ? (
+                        <div style={{ fontFamily: 'monospace', marginBottom: '100px', fontSize:'20px' }}>The weather forecast is currently unavailable</div>
                     ) : null}
                 </div>
             </Container>

@@ -2,26 +2,28 @@
 import styled from "styled-components";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCloudMoon, faCloudRain, faCloudSun, faMapMarked, faMapMarker, faMapMarkerAlt, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
-import { WiCloudy, WiDaySunny, WiNightAltPartlyCloudy, WiNightPartlyCloudy, WiRain, WiRainMix, WiShowers, WiSunrise, WiThunderstorm } from 'weather-icons-react';
+import { faCloudMoon, faCloudRain, faCloudShowersHeavy, faCloudSun, faMapMarked, faMapMarker, faMapMarkerAlt, faMoon, faStore, faSun, faWind } from '@fortawesome/free-solid-svg-icons'
+import { WiCloudy, WiCloudyGusts, WiCloudyWindy, WiDayCloudy, WiDayCloudyHigh, WiDayHaze, WiDaySprinkle, WiDaySunny, WiDaySunnyOvercast, WiFog, WiHurricane, WiNightAltPartlyCloudy, WiNightClear, WiNightPartlyCloudy, WiNightStormShowers, WiRain, WiRaindrop, WiRaindrops, WiRainMix, WiRainWind, WiRefreshAlt, WiShowers, WiSmog, WiSmoke, WiSprinkle, WiStormShowers, WiStormWarning, WiStrongWind, WiSunrise, WiThunderstorm, WiWindy } from 'weather-icons-react';
 import { mainColor, subColor, weatherIconColor } from "../../components/Color/Color.jsx";
 import './Weather.css';
 
 const WeatherCard = styled.div`
 
     background-image: linear-gradient(${subColor}, ${mainColor});
-    border-radius:15px;
+    border-radius: 15px;
     box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.2);
     color:${weatherIconColor};
     margin-left:auto;
     margin-right:auto;
-    margin-top: 10px;
+    margin-top: 0px;
     margin-bottom: 8px;
     padding:12px 15px;
-    width:30%;
+    width:35%;
 
 
 `;
+
+
 
 // Display Icon Based On Weather Condition
 const WeatherIcon = ({ forecast }) => {
@@ -30,71 +32,68 @@ const WeatherIcon = ({ forecast }) => {
     var icon;
 
     if (forecast == "Fair (Day)") {
-        icon_name = faSun;
+        icon = <WiDaySunnyOvercast size={size} color={weatherIconColor} className="w-icon" /> /* Fair (Day) */
     }
     else if (forecast == "Fair (Night)") {
-        icon_name = faMoon;
+        icon = <WiNightClear size={size} color={weatherIconColor} /> /* Fair (Night) */
     }
     else if (forecast == "Fair & Warm") {
-
+        icon = <WiDaySunny size={size} color={weatherIconColor} className="w-icon" /> /* Fair & Warm */
     }
     else if (forecast == "Partly Cloudy (Day)") {
-        icon_name = faCloudSun;
+        icon = <WiDayCloudy size={size} color={weatherIconColor} className="w-icon" /> /* Partly Cloudy (Day) */
     }
     else if (forecast == "Partly Cloudy (Night)") {
-        icon = <WiNightAltPartlyCloudy size={size} color={weatherIconColor} />;
-
+        icon = <WiNightAltPartlyCloudy size={size} color={weatherIconColor} className="w-icon" />; /* Partly Cloudy (Night) */
     }
     else if (forecast == "Cloudy") {
-        icon = <WiCloudy size={size} color={weatherIconColor} />;
+        icon = <WiCloudy size={size} color={weatherIconColor} className="w-icon" /> /* Cloudy */
     }
     else if (forecast == "Hazy") {
-
+        icon = <WiSmog size={size} color={weatherIconColor} className="w-icon" /> /* Hazy */
     }
     else if (forecast == "Slightly Hazy") {
-
+        icon = <WiSmoke size={size} color={weatherIconColor} className="w-icon" /> /* Slightly Hazy */
     }
     else if (forecast == "Windy") {
-
+        icon = <WiCloudyGusts size={size} color={weatherIconColor} className="w-icon" /> /* Windy */
     }
     else if (forecast == "Mist") {
-
+        icon = <WiWindy size={size} color={weatherIconColor} className="w-icon" /> /* Mist */
     }
     else if (forecast == "Light Rain") {
-        icon = <WiRain size={size} color={weatherIconColor} className="w-icon" />;
-
+        icon = <WiSprinkle size={size} color={weatherIconColor} className="w-icon" /> /* Light Rain */
     }
     else if (forecast == "Moderate Rain") {
-        icon = <WiRainMix size={size} color={weatherIconColor} className="w-icon" />;
-
+        icon = <WiRain size={size} color={weatherIconColor} className="w-icon" /> /* Moderate Rain */
     }
     else if (forecast == "Heavy Rain") {
-
+        icon = <WiRainWind size={size} color={weatherIconColor} className="w-icon" /> /* Heavy Rain */
     }
     else if (forecast == "Passing Showers") {
-
+        icon = <WiRaindrops size={size} color={weatherIconColor} className="w-icon" /> /* Passing Showers */
     }
     else if (forecast == "Light Showers") {
-
+        icon = <WiRaindrop size={size} color={weatherIconColor} className="w-icon" /> /* Light Shower */
     }
     else if (forecast == "Showers") {
-        icon = <WiShowers size={size} color={weatherIconColor} />;
+        icon = <WiShowers size={size} color={weatherIconColor} className="w-icon" /> /* Showers */
     }
     else if (forecast == "Heavy Showers") {
-
+        icon = <WiRainMix size={size} color={weatherIconColor} className="w-icon" /> /* Heavy Showers */
     }
     else if (forecast == "Thundery Showers") {
-        icon = <WiThunderstorm size={size} color={weatherIconColor} />;
-
+        icon = <WiStormShowers size={size} color={weatherIconColor} className="w-icon" /> /* Thundery Shower */
     }
     else if (forecast == "Heavy Thundery Showers") {
-        icon = <WiThunderstorm size={size} color={weatherIconColor} />;
-
+        icon = <WiThunderstorm size={size} color={weatherIconColor} className="w-icon" /> /* Heavy Thundery Shower */
     }
     else if (forecast == "Heavy Thundery Shower With Gusty Winds") {
+        icon = <><WiThunderstorm size={size} color={weatherIconColor} className="w-icon" />
+        <WiStrongWind size={'20%'} color={weatherIconColor} className="w-icon" /></>
 
     }
-
+ 
 
     var card_body = <div >{icon}<div className="card-body">{forecast}</div></div>
 
@@ -135,16 +134,15 @@ const WeatherDisplay = ({ location, data }) => {
 
     var currentDate = new Date();
 
-    var info, header = "";
     for (var i = 0; i < data.length; i++) {
-        var start = new Date(data[i].valid_period.start);
-        var end = new Date(data[i].valid_period.end);
+        let start = new Date(data[i].valid_period.start);
+        let end = new Date(data[i].valid_period.end);
         var startTime = get_formatted_time(start);
         var endTime = get_formatted_time(end);
 
         // if (startTime.match(regexTime) && endTime.match(regexTime)) {
         if (currentDate > start && currentDate < end) {
-            let forecast = data[i].forecasts[location].forecast;
+            var forecast = data[i].forecasts[location].forecast;
             var area = data[i].forecasts[location].area;
 
             var duration = `${get_duration_formatted(start)} - ${get_duration_formatted(end)}`;
@@ -152,27 +150,30 @@ const WeatherDisplay = ({ location, data }) => {
             var day = days[currentDate.getDay()];
             var date = get_formatted_date(currentDate);
 
-            // Insert The Correct Forecast Icon
-            info = <WeatherIcon forecast={forecast} />;
             break;
         }
         // }
     }
     return (
-        <div style={{ marginBottom: '50px' }}>
+        <div style={{ marginBottom: '50px', padding: '0px' }}>
             <WeatherCard>
-                <h2 className="text-left">{day}</h2>
+                <h4 className="text-left">
+                    <FontAwesomeIcon icon={faMapMarkerAlt} size='1x' /> {area}
+                </h4>
+                <div className="text-left">{day}</div>
                 <div className="text-left">{date}</div>
-                <div className="text-left">
-                    <FontAwesomeIcon icon={faMapMarkerAlt} /> {area}
-                </div>
-                <div>{duration}</div>
-                {info}
 
+
+                {/* Display Weather Icon */}
+                <WeatherIcon forecast={forecast} />
+                <div className="text-end fw-light font-monospace" style={{ marginTop: '30px' }}>
+                    {duration}
+                </div>
+                <hr style={{ marginBottom: '2px' }} />
+                <div className="text-end fw-light" style={{ marginTop: '0px', fontSize: '14px' }}>
+                    retrieved at {get_current_time()}
+                </div>
             </WeatherCard>
-            <div className="text-end" style={{ width: '30%', margin: 'auto' }}>
-                retrieved at <span id="current-time">{get_current_time()}</span>
-            </div>
         </div>
     );
 }
