@@ -49,7 +49,7 @@ const Uen_Validate = () => {
             'NR', 'CM', 'CD', 'MD', 'HS', 'VH', 'CH', 'MH', 'CL', 'XL', 'CX', 'RP', 'TU', 'TC', 'FB', 'FN', 'PA',
             'PB', 'SS', 'MC', 'SM'
         ];
-        
+
         let ok = false;
         // Step 1: Check Empty
         uen = uen.trim().toUpperCase();
@@ -125,46 +125,43 @@ const Uen_Validate = () => {
         <Fragment>
             <Container>
                 <h1 className="mt-5">Validate UEN</h1>
-                <Card className="w-card pb-5">
-                    <Card.Body >
-                        <Card.Title>Search UEN</Card.Title>
-                        <Form onSubmit={handleSubmit(onSubmit, onError)}>
-                            <InputGroup className="" style={{ width: '50%', margin: 'auto' }} hasValidation >
-                                <Form.Control
-                                    {...register("uen", {
-                                        required: "Required",
-                                        minLength: {
-                                            value: 9,
-                                            message: "Minimum 9 characters"
-                                        },
-                                        maxLength: {
-                                            value: 10,
-                                            message: "Maximum 10 characters"
-                                        }
-                                    })}
-                                    onChange={handleChange}
-                                    type="text"
-                                    placeholder="Please Enter UEN:"
-                                    name="uen"
-                                    id="uen"
-                                    ref={uen}
-                                    isInvalid={errors.uen || uenErr !== null}
-                                    isValid={uenSuccess}
-                                />
-                                <Button variant="outline-secondary" id="validate-btn" type="submit" >
-                                    Validate
-                                </Button>
-                                {errors.uen && errors.uen.types.required && (<ErrorMsg msg={errors.uen.types.required} />)}
-                                {errors.uen && errors.uen.types.minLength && (<ErrorMsg msg={errors.uen.types.minLength} />)}
-                                {errors.uen && errors.uen.types.maxLength && (<ErrorMsg msg={errors.uen.types.maxLength} />)}
-                                {(<ErrorMsg msg={uenErr} />)}
-                            </InputGroup>
-                            <div style={{ width: '50%', margin: '15px auto' }}>
-                                {!errors.uen && uenSuccess !== null && (<SuccessAlert msg={uenSuccess} />)}
-                            </div>
-                        </Form>
-                    </Card.Body>
-                </Card>
+
+                <Form onSubmit={handleSubmit(onSubmit, onError)} className="pt-5">
+                    <InputGroup className="" style={{ width: '50%', margin: 'auto' }} hasValidation >
+                        <Form.Control
+                            {...register("uen", {
+                                required: "Required",
+                                minLength: {
+                                    value: 9,
+                                    message: "Minimum 9 characters"
+                                },
+                                maxLength: {
+                                    value: 10,
+                                    message: "Maximum 10 characters"
+                                }
+                            })}
+                            onChange={handleChange}
+                            type="text"
+                            placeholder="Please Enter UEN:"
+                            name="uen"
+                            id="uen"
+                            ref={uen}
+                            isInvalid={errors.uen || uenErr !== null}
+                            isValid={uenSuccess}
+                        />
+                        <Button variant="outline-secondary" id="validate-btn" type="submit" >
+                            Validate
+                        </Button>
+                        {errors.uen && errors.uen.types.required && (<ErrorMsg msg={errors.uen.types.required} />)}
+                        {errors.uen && errors.uen.types.minLength && (<ErrorMsg msg={errors.uen.types.minLength} />)}
+                        {errors.uen && errors.uen.types.maxLength && (<ErrorMsg msg={errors.uen.types.maxLength} />)}
+                        {(<ErrorMsg msg={uenErr} />)}
+                    </InputGroup>
+                    <div style={{ width: '50%', margin: '15px auto' }}>
+                        {!errors.uen && uenSuccess !== null && (<SuccessAlert msg={uenSuccess} />)}
+                    </div>
+                </Form>
+
             </Container>
         </Fragment>
     );
