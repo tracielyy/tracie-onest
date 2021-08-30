@@ -35,32 +35,21 @@ const Navigation = () => {
         //     </Switch>
         // </Router>
 
-
         <Router className="router">
-
-            <Navbar collapseOnSelect expand="lg" variant="light" style={{ backgroundColor: mainColor }}>
-                <Container>
-                    <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-                </Container>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav float-end" />
-
-                <Navbar.Collapse id="responsive-navbar-nav">
-
-                    <Nav variant="pills" defaultActiveKey={`${process.env.PUBLIC_URL}/`}>
-
-                        <NavButton to={`${process.env.PUBLIC_URL}/`} >Home</NavButton>
-                        <NavButton to={`${process.env.PUBLIC_URL}/uen-validate`} eventKey='link-1'>Validate UEN</NavButton>
-                        <NavButton to={`${process.env.PUBLIC_URL}/weather-forecast`}>SG Weather</NavButton>
-                    </Nav>
-                </Navbar.Collapse>
-
-            </Navbar>
+            <NavBar className="navbar">
+                <NavButton to={`${process.env.PUBLIC_URL}/`}>Home</NavButton>
+                <NavDivider className="divider" />
+                <NavButton to={`${process.env.PUBLIC_URL}/uen-validate`}>Validate UEN</NavButton>
+                <NavDivider className="divider" />
+                <NavButton to={`${process.env.PUBLIC_URL}/weather-forecast`}>SG Weather</NavButton>
+            </NavBar>
             <Switch>
                 <Route path={`${process.env.PUBLIC_URL}/`} exact component={Home} ></Route>
                 <Route path={`${process.env.PUBLIC_URL}/uen-validate`} component={Uen_Validate} ></Route>
                 <Route path={`${process.env.PUBLIC_URL}/weather-forecast`} component={Weather} ></Route>
             </Switch>
         </Router>
+
 
 
     )
