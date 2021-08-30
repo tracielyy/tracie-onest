@@ -55,7 +55,7 @@ export const NavButton = styled(Link)`
 	font-size: 15px;
     font-weight: bold;
     font-family: OpenSans, Helvetica, sans-serif;
-
+	padding: 15px 0px;
 	height: 100%;
 	line-height: 100%;
 	width: 33%;
