@@ -20,21 +20,6 @@ import { mainColor, subColor } from "../../components/Color/Color.jsx"
 // Navigation Component
 const Navigation = () => {
     return (
-        // <Router className="router">
-        //     <NavBar className="navbar">
-        //         <NavButton to={`${process.env.PUBLIC_URL}/`}>Home</NavButton>
-        //         <NavDivider className="divider" />
-        //         <NavButton to={`${process.env.PUBLIC_URL}/uen-validate`}>Validate UEN</NavButton>
-        //         <NavDivider className="divider" />
-        //         <NavButton to={`${process.env.PUBLIC_URL}/weather-forecast`}>SG Weather</NavButton>
-        //     </NavBar>
-        //     <Switch>
-        //         <Route path={`${process.env.PUBLIC_URL}/`} exact component={Home} ></Route>
-        //         <Route path={`${process.env.PUBLIC_URL}/uen-validate`} component={Uen_Validate} ></Route>
-        //         <Route path={`${process.env.PUBLIC_URL}/weather-forecast`} component={Weather} ></Route>
-        //     </Switch>
-        // </Router>
-
         <Router className="router">
             <NavBar className="navbar">
                 <NavButton to={`${process.env.PUBLIC_URL}/`}>Home</NavButton>
