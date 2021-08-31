@@ -141,7 +141,7 @@ const WeatherDisplay = ({ location, data }) => {
         var endTime = get_formatted_time(end);
 
         // if (startTime.match(regexTime) && endTime.match(regexTime)) {
-        if (currentDate > start && currentDate < end) {
+        if (currentDate > start && currentDate < end && i == data.length - 1) {
             var forecast = data[i].forecasts[location].forecast;
             var area = data[i].forecasts[location].area;
 
