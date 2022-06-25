@@ -1,9 +1,9 @@
 // React Libraries
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
-import Container from 'react-bootstrap/Container'
+// import Navbar from 'react-bootstrap/Navbar'
+// import Nav from 'react-bootstrap/Nav'
+// import Container from 'react-bootstrap/Container'
 
 // Pages
 import Uen_Validate from "../../pages/uen-validate/uen-validate.js";
@@ -13,7 +13,7 @@ import Home from "../../pages/home/home.js";
 
 // Import Resources
 import { NavBar, NavButton, NavDivider } from "./NavigationElements"
-import { mainColor, subColor } from "../../components/Color/Color.jsx"
+// import { mainColor, subColor } from "../../components/Color/Color.jsx"
 
 
 
