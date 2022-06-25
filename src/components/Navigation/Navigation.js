@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Uen_Validate from "../../pages/uen-validate/uen-validate.js";
 import Weather from "../../pages/WeatherForecast/WeatherForecastPage.js";
 import Home from "../../pages/home/home.js";
+import Error404 from "../../pages/error-page/Error404.js";
 
 
 // Import Resources
@@ -32,6 +33,7 @@ const Navigation = () => {
                 <Route path={`${process.env.PUBLIC_URL}/`} exact component={Home} ></Route>
                 <Route path={`${process.env.PUBLIC_URL}/uen-validate`} component={Uen_Validate} ></Route>
                 <Route path={`${process.env.PUBLIC_URL}/weather-forecast`} component={Weather} ></Route>
+                <Route component={Error404} ></Route>
             </Switch>
         </Router>
 
