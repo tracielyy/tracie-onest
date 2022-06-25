@@ -7,7 +7,6 @@ import Container from "../../components/FragContainer";
 import WeatherDisplay from "./Weather";
 import { Form } from "react-bootstrap";
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
-import { get } from "react-hook-form";
 
 
 
